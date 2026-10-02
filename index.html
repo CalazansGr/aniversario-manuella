@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Aniversário da Manuella ☁️</title>
+  <meta name="description" content="Você está convidado(a) para o aniversário da Manuella! Tema Cinnamoroll ☁️💙">
+  <meta name="theme-color" content="#bfe6ff">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Você é meu convidado! ☁️ Aniversário da Manuella">
+  <meta property="og:description" content="Toque para abrir o convite e confirmar presença 💌">
+  <meta property="og:image" content="https://manuellacalazans.site/assets/og.png">
+  <meta property="og:url" content="https://manuellacalazans.site/">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%98%81%EF%B8%8F%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Pacifico&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="locked">
+
+  <!-- Cinnamoroll (SVG reutilizado) -->
+  <template id="cinna-tpl">
+    <svg class="cinna" viewBox="0 0 220 230" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Cinnamoroll">
+      <!-- rabinho -->
+      <g class="tail"><path d="M172 178c22-6 30 16 12 22-14 5-22-8-12-14" fill="#fff" stroke="#cfe6f7" stroke-width="3" stroke-linecap="round"/></g>
+      <!-- corpo -->
+      <ellipse cx="110" cy="188" rx="40" ry="32" fill="#fff" stroke="#cfe6f7" stroke-width="3"/>
+      <ellipse cx="82" cy="214" rx="15" ry="9" fill="#fff" stroke="#cfe6f7" stroke-width="3"/>
+      <ellipse cx="138" cy="214" rx="15" ry="9" fill="#fff" stroke="#cfe6f7" stroke-width="3"/>
+      <!-- orelhas -->
+      <g class="ear ear-l"><path d="M54 92C14 90-2 130 14 168c10 22 38 8 44-16 5-22 4-46-4-60z" fill="#fff" stroke="#cfe6f7" stroke-width="3"/><path d="M46 112c-14 2-20 24-12 44 5 12 18 8 21-6 3-14 1-30-9-38z" fill="#ffd1e3" opacity=".55"/></g>
+      <g class="ear ear-r"><path d="M166 92c40-2 56 38 40 76-10 22-38 8-44-16-5-22-4-46 4-60z" fill="#fff" stroke="#cfe6f7" stroke-width="3"/><path d="M174 112c14 2 20 24 12 44-5 12-18 8-21-6-3-14-1-30 9-38z" fill="#ffd1e3" opacity=".55"/></g>
+      <!-- cabeça -->
+      <ellipse cx="110" cy="100" rx="66" ry="56" fill="#fff" stroke="#cfe6f7" stroke-width="3"/>
+      <!-- topete -->
+      <path d="M96 48c4-10 20-10 24 0-8-3-16-3-24 0z" fill="#fff" stroke="#cfe6f7" stroke-width="3" stroke-linejoin="round"/>
+      <!-- olhos -->
+      <g class="eyes">
+        <ellipse cx="80" cy="104" rx="9" ry="10.5" fill="#4a9be0"/><circle cx="83" cy="100" r="3.4" fill="#fff"/>
+        <ellipse cx="140" cy="104" rx="9" ry="10.5" fill="#4a9be0"/><circle cx="143" cy="100" r="3.4" fill="#fff"/>
+      </g>
+      <!-- bochechas -->
+      <ellipse cx="62" cy="124" rx="12" ry="7.5" fill="#ffb3d1" opacity=".75"/>
+      <ellipse cx="158" cy="124" rx="12" ry="7.5" fill="#ffb3d1" opacity=".75"/>
+      <!-- focinho -->
+      <ellipse cx="110" cy="116" rx="4.5" ry="3.4" fill="#5b4a5e"/>
+      <path d="M100 124c4 6 16 6 20 0" fill="none" stroke="#5b4a5e" stroke-width="2.6" stroke-linecap="round"/>
+    </svg>
+  </template>
+
+  <!-- ============ ABERTURA ============ -->
+  <section id="cover" class="cover" aria-label="Abertura do convite">
+    <div class="sky" aria-hidden="true">
+      <span class="cloud c1"></span><span class="cloud c2"></span><span class="cloud c3"></span><span class="cloud c4"></span>
+    </div>
+    <div id="fx" class="fx" aria-hidden="true"></div>
+
+    <div class="cover-inner">
+      <p class="cover-kicker">psiu... você recebeu um convite</p>
+      <button id="openBtn" class="envelope" type="button" aria-label="Abrir o convite">
+        <span class="env-back"></span>
+        <span class="env-letter"><span class="cinna-slot cover-cinna"></span></span>
+        <span class="env-front"></span>
+        <span class="env-flap"></span>
+        <span class="env-heart">♥</span>
+      </button>
+      <p class="tap-hint">Toque para abrir 💌</p>
+    </div>
+  </section>
+
+  <button id="musicBtn" class="music-btn" type="button" aria-label="Pausar música" hidden>🎵</button>
+  <audio id="bgm" loop preload="auto"></audio>
+
+  <!-- ============ CONVITE ============ -->
+  <main id="site" class="site" hidden>
+    <div class="sky sky-fixed" aria-hidden="true">
+      <span class="cloud c1"></span><span class="cloud c2"></span><span class="cloud c3"></span><span class="cloud c4"></span>
+    </div>
+
+    <header class="hero">
+      <div class="cinna-slot hero-cinna"></div>
+      <p class="eyebrow">você está convidado(a) para o aniversário de</p>
+      <h1 id="heroName" class="name">Manuella</h1>
+      <p id="heroAge" class="age"></p>
+      <p id="heroMsg" class="lead"></p>
+      <div id="countdown" class="countdown" aria-live="off"></div>
+    </header>
+
+    <section class="card-section" id="detalhes">
+      <h2>Quando &amp; onde</h2>
+      <div class="info-grid">
+        <article class="info-card">
+          <span class="ico">📅</span><h3>Data</h3><p id="infoData">—</p>
+        </article>
+        <article class="info-card">
+          <span class="ico">⏰</span><h3>Horário</h3><p id="infoHora">—</p>
+        </article>
+        <article class="info-card wide">
+          <span class="ico">📍</span><h3 id="infoLocal">Local</h3><p id="infoEnd">—</p>
+          <a id="mapsBtn" class="btn btn-soft" target="_blank" rel="noopener">Abrir no Google Maps</a>
+        </article>
+      </div>
+      <iframe id="mapFrame" class="map" title="Mapa do local" loading="lazy" referrerpolicy="no-referrer-when-downgrade" hidden></iframe>
+      <p id="infoObs" class="obs" hidden></p>
+    </section>
+
+    <section class="card-section" id="rsvp">
+      <h2>Confirme sua presença</h2>
+
+      <form id="rsvpForm" class="form" novalidate>
+        <label>Qual é o seu nome?
+          <input name="nome" type="text" maxlength="60" autocomplete="name" placeholder="Escreva aqui o seu nomezinho" required>
+        </label>
+        <p id="formMsg" class="form-msg" role="status" hidden></p>
+        <button class="btn btn-main" type="submit">Confirmar presença ♥</button>
+        <p class="muted small">Vai abrir o WhatsApp com a mensagem pronta, é só enviar 💌</p>
+      </form>
+
+      <div id="thanks" class="thanks" hidden>
+        <div class="cinna-slot thanks-cinna"></div>
+        <h3 id="thanksTitle">Presença confirmada! 🎉</h3>
+        <p id="thanksText"></p>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>feito com muito carinho ☁️💙💗</p>
+    </footer>
+  </main>
+
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
