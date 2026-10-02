@@ -19,7 +19,7 @@ window.CONFIG = {
   observacoes: "", // ex.: "Traje: tons de azul e rosa 💙💗"
 
   // WhatsApp que recebe as confirmações. Formato: 55 + DDD + número, só dígitos
-  whatsapp: "5521999999999",
+  whatsapp: "5521974346081",
 
   musica: "assets/musica.mp3",
 };
