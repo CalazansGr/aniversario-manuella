@@ -27,7 +27,7 @@ No painel do registrador (DNS):
 - 4 registros **A** para `@`: `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
 - 1 registro **CNAME** `www` → `SEU_USUARIO.github.io`
 
-Depois, em Settings → Pages, confirme o domínio `manuellacalazans.site` (o arquivo `CNAME` já está no repo) e marque **Enforce HTTPS** (pode levar alguns minutos).
+Depois, em Settings → Pages, confirme o domínio `manuellacalazans.site` (isso cria o arquivo `CNAME` no repo; se preferir, crie você um arquivo `CNAME` com o texto `manuellacalazans.site`) e marque **Enforce HTTPS** (pode levar alguns minutos).
 
 ## 6. Prévia do link (WhatsApp)
 Adicione uma imagem 1200×630 em `assets/og.png` para aparecer na prévia do link.
