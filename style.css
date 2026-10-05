@@ -211,6 +211,7 @@ h1, h2, h3, p { margin: 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation-duration: .001s !important; animation-iteration-count: 1 !important; transition-duration: .001s !important; scroll-behavior: auto !important; }
+  /* o confete (.fx) é curto e festivo: continua mesmo com "reduzir animações" ativo no celular */
+  *:not(.fx *), *:not(.fx *)::before, *:not(.fx *)::after { animation-duration: .001s !important; animation-iteration-count: 1 !important; transition-duration: .001s !important; scroll-behavior: auto !important; }
   .cloud { left: 10%; }
 }

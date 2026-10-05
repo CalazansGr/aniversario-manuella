@@ -46,14 +46,13 @@
   const fx = $("#fx");
   const EMOJIS = ["💙", "💗", "⭐", "✨", "☁️", "🎀", "🤍", "🎉"];
   function burst(n = 46, spread = true) {
-    if (reduceMotion) return;
     for (let i = 0; i < n; i++) {
       const el = document.createElement("i");
       el.textContent = EMOJIS[(Math.random() * EMOJIS.length) | 0];
       el.style.left = Math.random() * 100 + "vw";
       el.style.fontSize = 16 + Math.random() * 26 + "px";
       el.style.animationDuration = 3.2 + Math.random() * 3.2 + "s";
-      el.style.animationDelay = (spread ? Math.random() * 1.6 : Math.random() * 0.3) + "s";
+      el.style.animationDelay = (spread ? Math.random() * 0.9 : Math.random() * 0.3) + "s";
       el.style.setProperty("--dx", (Math.random() - 0.5) * 160 + "px");
       el.style.setProperty("--rot", (Math.random() - 0.5) * 720 + "deg");
       el.addEventListener("animationend", () => el.remove());
@@ -103,7 +102,7 @@
       requestAnimationFrame(() => site.classList.add("show"));
       cover.classList.add("gone");
       setTimeout(() => cover.remove(), 1000);
-    }, reduceMotion ? 300 : 2300);
+    }, 2300);
   });
 
   // ---------- Confirmação de presença (mensagem automática no WhatsApp) ----------
